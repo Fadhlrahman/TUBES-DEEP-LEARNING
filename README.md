@@ -319,8 +319,10 @@ jupyter notebook telco.ipynb
 ---
 
 ## 👥 Tim Peneliti & Pengembang
-* **Fadhlrahman Fitra Arsil** — *Master's Student in Deep Learning / Data Science*
+* **Fadhlrahman Fitra Arsil** — *201012610007*
+* **Aliza Nurfitrian Meizahra** — *201012610012*
+* **Faridz Ramadhan Kampi** — *201012610032*
 * **Mata Kuliah:** Deep Learning — Mini Project Studi Kasus 1 (Telekomunikasi)
 
 ---
-*Dokumentasi ini disusun untuk memenuhi standar pelaporan ilmiah format IEEE dan transparansi data science industri.*
+*Dokumentasi ini disusun untuk memenuhi Tugas Mini Project standar dengan pelaporan ilmiah format IEEE dan transparansi data science industri.*
