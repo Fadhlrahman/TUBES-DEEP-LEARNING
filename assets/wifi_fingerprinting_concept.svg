@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="accentBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <linearGradient id="accentGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80" />
+      <stop offset="100%" stop-color="#16a34a" />
+    </linearGradient>
+    <linearGradient id="accentOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="360" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="2"/>
+
+  <!-- Title -->
+  <text x="480" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#f8fafc" text-anchor="middle" letter-spacing="0.5">
+    Bagaimana Cara Kerja Wi-Fi Fingerprinting Localization?
+  </text>
+  <text x="480" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">
+    Menentukan lokasi indoor dari kombinasi kekuatan sinyal Wi-Fi tanpa memerlukan GPS
+  </text>
+
+  <!-- STEP 1: ACCESS POINTS -->
+  <g transform="translate(40, 90)">
+    <rect width="200" height="230" rx="12" fill="url(#cardGrad)" stroke="#475569" stroke-width="1.5" />
+    <rect x="0" y="0" width="200" height="34" rx="12" fill="#334155" />
+    <rect x="0" y="20" width="200" height="14" fill="#334155" />
+    <text x="100" y="23" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle">1. Pemancar Wi-Fi (WAP)</text>
+
+    <!-- Router Icons -->
+    <g transform="translate(25, 50)">
+      <circle cx="20" cy="20" r="14" fill="#0284c7" />
+      <path d="M12 16 a12 12 0 0 1 16 0 M15 19 a8 8 0 0 1 10 0 M19 22 a2 2 0 0 1 2 0" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <text x="45" y="18" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9">WAP 01</text>
+      <text x="45" y="32" font-family="sans-serif" font-size="11" fill="#38bdf8">Sinyal: -45 dBm (Kuat)</text>
+    </g>
+
+    <g transform="translate(25, 105)">
+      <circle cx="20" cy="20" r="14" fill="#0284c7" />
+      <path d="M12 16 a12 12 0 0 1 16 0 M15 19 a8 8 0 0 1 10 0 M19 22 a2 2 0 0 1 2 0" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <text x="45" y="18" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9">WAP 02</text>
+      <text x="45" y="32" font-family="sans-serif" font-size="11" fill="#cbd5e1">Sinyal: -78 dBm (Sedang)</text>
+    </g>
+
+    <g transform="translate(25, 160)">
+      <circle cx="20" cy="20" r="14" fill="#475569" />
+      <text x="20" y="25" font-family="sans-serif" font-size="14" font-weight="bold" fill="#94a3b8" text-anchor="middle">✕</text>
+      <text x="45" y="18" font-family="sans-serif" font-size="12" font-weight="600" fill="#94a3b8">WAP 520</text>
+      <text x="45" y="32" font-family="sans-serif" font-size="11" fill="#f87171">-105 dBm (Tidak Terdeteksi)</text>
+    </g>
+  </g>
+
+  <!-- ARROW 1 -->
+  <path d="M 245 205 L 285 205" stroke="#38bdf8" stroke-width="3" stroke-dasharray="6,4" fill="none" />
+  <polygon points="285,200 295,205 285,210" fill="#38bdf8" />
+
+  <!-- STEP 2: USER SMARTPHONE & FINGERPRINT -->
+  <g transform="translate(295, 90)">
+    <rect width="210" height="230" rx="12" fill="url(#cardGrad)" stroke="#475569" stroke-width="1.5" />
+    <rect x="0" y="0" width="210" height="34" rx="12" fill="#334155" />
+    <rect x="0" y="20" width="210" height="14" fill="#334155" />
+    <text x="105" y="23" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#4ade80" text-anchor="middle">2. Sidik Jari Sinyal (Ponsel)</text>
+
+    <!-- Phone Graphic -->
+    <rect x="65" y="48" width="80" height="70" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="2"/>
+    <circle cx="105" cy="110" r="3" fill="#64748b"/>
+    <rect x="73" y="56" width="64" height="46" rx="4" fill="#1e293b"/>
+    <path d="M 93 72 L 105 84 L 117 72" stroke="#4ade80" stroke-width="2" fill="none"/>
+    <circle cx="105" cy="72" r="4" fill="#4ade80"/>
+
+    <!-- Vector Box -->
+    <rect x="15" y="130" width="180" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="105" y="148" font-family="monospace" font-size="11" font-weight="bold" fill="#38bdf8" text-anchor="middle">Vektor Fitur RSSI (1x520)</text>
+    <text x="25" y="170" font-family="monospace" font-size="11" fill="#94a3b8">[-45, -78, -105, ...]</text>
+    <text x="105" y="192" font-family="sans-serif" font-size="10" fill="#a7f3d0" text-anchor="middle">✓ Imputer &amp; Scaling Pipeline</text>
+    <text x="105" y="206" font-family="sans-serif" font-size="10" fill="#a7f3d0" text-anchor="middle">✓ Reduksi Fitur Konstan</text>
+  </g>
+
+  <!-- ARROW 2 -->
+  <path d="M 510 205 L 550 205" stroke="#4ade80" stroke-width="3" stroke-dasharray="6,4" fill="none" />
+  <polygon points="550,200 560,205 550,210" fill="#4ade80" />
+
+  <!-- STEP 3: AI MODEL ENGINE -->
+  <g transform="translate(560, 90)">
+    <rect width="170" height="230" rx="12" fill="url(#cardGrad)" stroke="#475569" stroke-width="1.5" />
+    <rect x="0" y="0" width="170" height="34" rx="12" fill="#334155" />
+    <rect x="0" y="20" width="170" height="14" fill="#334155" />
+    <text x="85" y="23" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#fb923c" text-anchor="middle">3. AI Engine</text>
+
+    <!-- Model boxes -->
+    <rect x="15" y="50" width="140" height="48" rx="6" fill="#1e293b" stroke="#f97316" stroke-width="1.5"/>
+    <text x="85" y="70" font-family="sans-serif" font-size="11" font-weight="700" fill="#fdba74" text-anchor="middle">Random Forest</text>
+    <text x="85" y="86" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">200 Estimators (Ensemble)</text>
+
+    <rect x="15" y="110" width="140" height="48" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="85" y="130" font-family="sans-serif" font-size="11" font-weight="700" fill="#7dd3fc" text-anchor="middle">Multilayer Perceptron</text>
+    <text x="85" y="146" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Deep Neural Net (ReLU/Drop)</text>
+
+    <rect x="15" y="170" width="140" height="42" rx="6" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+    <text x="85" y="188" font-family="sans-serif" font-size="11" font-weight="600" fill="#cbd5e1" text-anchor="middle">SVM / KNN / Ridge</text>
+    <text x="85" y="202" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">5-Fold Cross Validation</text>
+  </g>
+
+  <!-- ARROW 3 -->
+  <path d="M 735 205 L 775 205" stroke="#fb923c" stroke-width="3" stroke-dasharray="6,4" fill="none" />
+  <polygon points="775,200 785,205 775,210" fill="#fb923c" />
+
+  <!-- STEP 4: PREDICTED LOCATION -->
+  <g transform="translate(785, 90)">
+    <rect width="135" height="230" rx="12" fill="url(#cardGrad)" stroke="#475569" stroke-width="1.5" />
+    <rect x="0" y="0" width="135" height="34" rx="12" fill="#334155" />
+    <rect x="0" y="20" width="135" height="14" fill="#334155" />
+    <text x="67" y="23" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#a855f7" text-anchor="middle">4. Hasil Lokasi</text>
+
+    <g transform="translate(12, 50)">
+      <rect width="110" height="46" rx="6" fill="#0f172a" stroke="#a855f7" stroke-width="1"/>
+      <text x="55" y="18" font-family="sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">GEDUNG (Building)</text>
+      <text x="55" y="36" font-family="sans-serif" font-size="13" font-weight="700" fill="#c084fc" text-anchor="middle">Gedung 1</text>
+    </g>
+
+    <g transform="translate(12, 106)">
+      <rect width="110" height="46" rx="6" fill="#0f172a" stroke="#a855f7" stroke-width="1"/>
+      <text x="55" y="18" font-family="sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">LANTAI (Floor)</text>
+      <text x="55" y="36" font-family="sans-serif" font-size="13" font-weight="700" fill="#c084fc" text-anchor="middle">Lantai 2</text>
+    </g>
+
+    <g transform="translate(12, 162)">
+      <rect width="110" height="52" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
+      <text x="55" y="18" font-family="sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">KOORDINAT (X, Y)</text>
+      <text x="55" y="33" font-family="monospace" font-size="10" font-weight="700" fill="#4ade80" text-anchor="middle">X: -7541.26 m</text>
+      <text x="55" y="46" font-family="monospace" font-size="10" font-weight="700" fill="#4ade80" text-anchor="middle">Y: 4864921 m</text>
+    </g>
+  </g>
+</svg>
+
