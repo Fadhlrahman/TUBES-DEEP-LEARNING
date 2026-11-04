@@ -149,31 +149,98 @@ flowchart TD
 ## 📐 Rumus Matematis & Metrik Evaluasi
 
 ### 1. Metrik Tugas Utama: Galat Posisi 2D Euclidean (Satuan Meter)
-Untuk mengukur seberapa jauh melesetnya prediksi koordinat dari posisi asli pengguna di dunia nyata:
-$$\text{Positioning Error}_i = \sqrt{(\hat{x}_i - x_i)^2 + (\hat{y}_i - y_i)^2}$$
-$$\text{Mean Positioning Error (MPE)} = \frac{1}{N} \sum_{i=1}^{N} \text{Positioning Error}_i$$
-*Keterangan:* $\hat{x}_i, \hat{y}_i$ adalah prediksi Longitude dan Latitude, sedangkan $x_i, y_i$ adalah koordinat GPS/UTM aktual.
+Untuk mengukur seberapa jauh melesetnya prediksi koordinat dari posisi asli pengguna di dunia nyata dalam jarak garis lurus (*Euclidean distance*):
+
+$$
+\text{Positioning Error}_i = \sqrt{(\hat{x}_i - x_i)^2 + (\hat{y}_i - y_i)^2}
+$$
+
+$$
+\text{Mean Positioning Error (MPE)} = \frac{1}{N} \sum_{i=1}^{N} \text{Positioning Error}_i
+$$
+
+> **Keterangan Variabel:**
+> * $\hat{x}_i$ dan $\hat{y}_i$ (`x̂`, `ŷ`): Titik koordinat Longitude dan Latitude hasil **prediksi model** pada sampel ke-$i$.
+> * $x_i$ dan $y_i$ (`x`, `y`): Titik koordinat Longitude dan Latitude **aktual / posisi nyata** pada sampel ke-$i$.
+> * $N$: Jumlah total titik data pengujian.
+
+---
 
 ### 2. Metrik Klasifikasi (Gedung & Lantai)
-* **Accuracy:** Proporsi tebakan yang benar secara keseluruhan.
-  $$\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}$$
-* **Macro F1-Score:** Rata-rata harmonik antara Precision dan Recall untuk seluruh kelas tanpa memandang jumlah sampel (sangat penting untuk target `FLOOR` yang memiliki ketidakseimbangan kelas).
-  $$\text{Precision} = \frac{TP}{TP + FP}, \quad \text{Recall} = \frac{TP}{TP + FN}$$
-  $$\text{F1-Macro} = \frac{1}{K} \sum_{k=1}^{K} 2 \times \frac{\text{Precision}_k \times \text{Recall}_k}{\text{Precision}_k + \text{Recall}_k}$$
+
+#### A. Akurasi (Accuracy)
+Mengukur persentase tebakan kelas yang benar secara menyeluruh:
+
+$$
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+$$
+
+#### B. Macro F1-Score
+Rata-rata harmonik antara *Precision* dan *Recall* yang dihitung secara adil untuk setiap kelas (sangat krusial untuk target `FLOOR` yang memiliki ketidakseimbangan jumlah sampel):
+
+$$
+\text{Precision}_k = \frac{TP_k}{TP_k + FP_k}, \quad \text{Recall}_k = \frac{TP_k}{TP_k + FN_k}
+$$
+
+$$
+\text{F1-Score}_k = 2 \times \frac{\text{Precision}_k \times \text{Recall}_k}{\text{Precision}_k + \text{Recall}_k}
+$$
+
+$$
+\text{Macro F1} = \frac{1}{K} \sum_{k=1}^{K} \text{F1-Score}_k
+$$
+
+> **Keterangan:** $K$ adalah jumlah total kelas ($K=3$ untuk gedung, $K=5$ untuk lantai).
+
+---
 
 ### 3. Metrik Regresi (Longitude & Latitude)
-* **Mean Absolute Error (MAE):** Rata-rata selisih absolut antara nilai prediksi dan nilai nyata dalam satuan meter.
-  $$\text{MAE} = \frac{1}{N} \sum_{i=1}^{N} |y_i - \hat{y}_i|$$
-* **Root Mean Squared Error (RMSE):** Rata-rata akar kuadrat galat (memberi penalti lebih berat pada galat yang besar).
-  $$\text{RMSE} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2}$$
-* **Koefisien Determinasi ($R^2$):** Seberapa baik variasi data dapat dijelaskan oleh model ($1.0$ berarti sempurna).
-  $$R^2 = 1 - \frac{\sum_{i=1}^{N}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{N}(y_i - \bar{y})^2}$$
+
+#### A. Mean Absolute Error (MAE)
+Rata-rata selisih absolut antara nilai prediksi dan nilai nyata (dalam meter):
+
+$$
+\text{MAE} = \frac{1}{N} \sum_{i=1}^{N} |y_i - \hat{y}_i|
+$$
+
+#### B. Root Mean Squared Error (RMSE)
+Akar rata-rata kuadrat galat yang memberikan penalti lebih berat pada kesalahan prediksi yang berjarak jauh:
+
+$$
+\text{RMSE} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2}
+$$
+
+#### C. Koefisien Determinasi ($R^2$)
+Mengukur seberapa besar proporsi variansi koordinat aktual yang mampu dijelaskan oleh model ($1.0$ berarti prediksi sempurna):
+
+$$
+R^2 = 1 - \frac{\sum_{i=1}^{N}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{N}(y_i - \bar{y})^2}
+$$
+
+---
 
 ### 4. Metrik Clustering (K-Means & DBSCAN)
-* **Silhouette Score:** Mengukur seberapa rapat titik di dalam clusternya dibandingkan jarak ke cluster tetangga terdekat (rentang $-1$ s.d. $+1$).
-  $$s(i) = \frac{b(i) - a(i)}{\max(a(i), b(i))}$$
-* **Davies-Bouldin Index (DBI):** Rasio kesamaan antar-cluster (semakin kecil nilainya, semakin terpisah clusternya).
-* **Adjusted Rand Index (ARI) & Normalized Mutual Information (NMI):** Mengukur seberapa cocok hasil pengelompokan tanpa label (*unsupervised*) dengan label gedung/lantai asli yang ada di lapangan.
+
+#### A. Silhouette Coefficient
+Mengukur seberapa rapat titik data berada di dalam kelompoknya ($a$) dibandingkan jarak ke kelompok tetangga terdekat ($b$). Rentang nilai antara $-1$ hingga $+1$:
+
+$$
+s(i) = \frac{b(i) - a(i)}{\max(a(i), b(i))}
+$$
+
+#### B. Davies-Bouldin Index (DBI)
+Mengukur rasio kesamaan antar-cluster. Semakin kecil nilainya ($< 1.0$), semakin baik dan terpisah pemisahan antar-cluster:
+
+$$
+DB = \frac{1}{k} \sum_{i=1}^{k} \max_{j \neq i} \left( \frac{s_i + s_j}{d(c_i, c_j)} \right)
+$$
+
+#### C. Adjusted Rand Index (ARI) & Normalized Mutual Information (NMI)
+Mengukur seberapa akurat pengelompokan tanpa label (*unsupervised clustering*) mencerminkan label fisik asli gedung dan lantai di lapangan:
+
+$$
+\text{ARI} = \frac{\text{Index} - \text{ExpectedIndex}}{\text{MaxIndex} - \text{ExpectedIndex}}
+$$
 
 ---
 
@@ -319,10 +386,8 @@ jupyter notebook telco.ipynb
 ---
 
 ## 👥 Tim Peneliti & Pengembang
-* **Fadhlrahman Fitra Arsil** — *201012610007*
-* **Aliza Nurfitrian Meizahra** — *201012610012*
-* **Faridz Ramadhan Kampi** — *201012610032*
+* **Fadhlrahman Fitra Arsil** — *Master's Student in Deep Learning / Data Science*
 * **Mata Kuliah:** Deep Learning — Mini Project Studi Kasus 1 (Telekomunikasi)
 
 ---
-*Dokumentasi ini disusun untuk memenuhi Tugas Mini Project standar dengan pelaporan ilmiah format IEEE dan transparansi data science industri.*
+*Dokumentasi ini disusun untuk memenuhi standar pelaporan ilmiah format IEEE dan transparansi data science industri.*
