@@ -281,13 +281,23 @@ def create_document():
     
     p_sub = doc.add_paragraph()
     p_sub.paragraph_format.space_before = Pt(0)
-    p_sub.paragraph_format.space_after = Pt(24)
+    p_sub.paragraph_format.space_after = Pt(12)
     p_sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
     r_sub = p_sub.add_run("Buku Panduan Komprehensif: Dari Konsep Awam, Fisika Sinyal Radio, Glosarium Istilah, Alur 4 Proses Metodologi & Komponennya, Cara Analisis Visual Grafik, Bedah Coding Baris-per-Baris, hingga Evaluasi Overfitting vs Covariate Shift")
     r_sub.italic = True
     r_sub.font.name = "Arial"
-    r_sub.font.size = Pt(11)
+    r_sub.font.size = Pt(10)
     r_sub.font.color.rgb = RGBColor(75, 85, 99)
+
+    # Team members callout on cover
+    team_text = (
+        "• Fadhlrahman Fitra Arsil (201012610007)\n"
+        "• Aliza Nurfitrian Meizahra (201012610012)\n"
+        "• Faridz Ramadhan Kampi (201012610032)\n"
+        "Mata Kuliah: Deep Learning — Mini Project Studi Kasus 1 (Telekomunikasi)\n"
+        "File Master Notebook: KELOMPOK 6_FINAL.ipynb"
+    )
+    add_callout("👥 Tim Peneliti & Pengembang", team_text, "concept")
 
     add_callout(
         "Tujuan & Sasaran Dokumen Ini",
@@ -843,7 +853,7 @@ def create_document():
     # -------------------------------------------------------------
     add_h1("BAB 7: BEDAH KODINGAN SECARA TEKNIS (LINE-BY-LINE WALKTHROUGH)")
     add_p(
-        "Di bab ini, kita akan membedah potongan kode Python paling krusial yang ada di file `telco.ipynb`. Anda akan memahami fungsi dari setiap baris kode layaknya seorang programmer profesional.",
+        "Di bab ini, kita akan membedah potongan kode Python paling krusial yang ada di file `KELOMPOK 6_FINAL.ipynb`. Anda akan memahami fungsi dari setiap baris kode layaknya seorang programmer profesional.",
         "Pengantar Kode: "
     )
 

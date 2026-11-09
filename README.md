@@ -4,7 +4,7 @@
 [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
 [![Status](https://img.shields.io/badge/Project-Completed-success)](#)
-[![Notebook](https://img.shields.io/badge/Notebook-INII%20AMAN%20LA.ipynb-brightgreen?logo=jupyter)](#)
+[![Notebook](https://img.shields.io/badge/Notebook-KELOMPOK%206__FINAL.ipynb-brightgreen?logo=jupyter)](#)
 [![Standard](https://img.shields.io/badge/Paper%20Format-IEEE%20Style-red)](#)
 
 ---
@@ -18,23 +18,24 @@
 6. [Rumus Matematis & Metrik Evaluasi](#-rumus-matematis--metrik-evaluasi)
 7. [Daftar Model & Alasan Pemilihan](#-daftar-model--alasan-pemilihan)
 8. [Galeri Visual Hasil Eksperimen & Analisis Mendalam](#-galeri-visual-hasil-eksperimen--analisis-mendalam)
-9. [Kesimpulan & Rekomendasi Implementasi Nyata](#-kesimpulan--rekomendasi-implementasi-nyata)
-10. [Panduan Instalasi & Menjalankan Proyek](#-panduan-instalasi--menjalankan-proyek)
-11. [Tim Peneliti & Pengembang](#-tim-peneliti--pengembang)
+9. [Keterbatasan Eksperimen & Analisis Ilmiah (Distribution Shift)](#-keterbatasan-eksperimen--analisis-ilmiah-distribution-shift)
+10. [Kesimpulan & Rekomendasi Implementasi Nyata](#-kesimpulan--rekomendasi-implementasi-nyata)
+11. [Panduan Instalasi & Menjalankan Proyek](#-panduan-instalasi--menjalankan-proyek)
+12. [Tim Peneliti & Pengembang](#-tim-peneliti--pengembang)
 
 ---
 
 ## 💡 Sekilas Tentang Proyek & Konsep Kerja
 
 ### *Bayangkan Anda Berada di Dalam Gedung Kampus / Mall Raksasa...*
-Ketika berada di luar ruangan, ponsel Anda dengan mudah menentukan posisi menggunakan satelit **GPS**. Namun, begitu melangkah ke dalam gedung bertingkat, sinyal GPS terhalang oleh atap beton bertulang (*reinforced concrete*), kaca peredam panas (*Low-E*), dan dinding baja, sehingga sinyal GPS menjadi **tidak akurat bahkan mati total**.
+Ketika berada di luar ruangan, ponsel Anda dengan mudah menentukan posisi menggunakan satelit **GPS**. Namun, begitu melangkah ke dalam gedung bertingkat, sinyal GPS terhalang oleh atap beton bertulang (*reinforced concrete*), kaca peredam panas (*Low-E*), dan struktur baja, sehingga sinyal GPS menjadi **tidak akurat bahkan mati total**.
 
 Lalu, bagaimana aplikasi navigasi indoor bisa mengetahui:
 1. **Di gedung mana** Anda berada? *(Klasifikasi Gedung: `BUILDINGID`)*
 2. **Di lantai berapa** Anda berdiri? *(Klasifikasi Lantai: `FLOOR`)*
 3. **Di titik koordinat berapa meter persisnya** Anda berjalan? *(Regresi Posisi: `LONGITUDE` & `LATITUDE`)*
 
-**Jawabannya adalah Wi-Fi Fingerprinting.** Setiap sudut ruangan menerima kombinasi kekuatan sinyal Wi-Fi (*Received Signal Strength Indication* / RSSI) yang unik dari ratusan pemancar (*Wireless Access Point* / WAP) di sekitarnya. Proyek ini mengimplementasikan algoritma cerdas berbasis **Machine Learning (Ensemble, Linear, Non-Linear)** dan **Deep Learning Multi-Layer Perceptron (MLP/ANN)** pada berkas master [`INII AMAN LA.ipynb`](file:///d:/DATA/S2/Semester%201/Deep%20Learning/mini%20project/INII%20AMAN%20LA.ipynb) untuk mengenali pola sidik jari radio tersebut dan memprediksi lokasi pengguna dengan tingkat presisi skala meter.
+**Jawabannya adalah Wi-Fi Fingerprinting.** Setiap sudut ruangan menerima kombinasi kekuatan sinyal Wi-Fi (*Received Signal Strength Indication* / RSSI) yang unik dari ratusan pemancar (*Wireless Access Point* / WAP) di sekitarnya. Proyek ini mengimplementasikan algoritma cerdas berbasis **Machine Learning (Ensemble, Linear, Non-Linear)** dan **Deep Learning Multi-Layer Perceptron (MLP/ANN)** pada berkas master [`KELOMPOK 6_FINAL.ipynb`](file:///d:/DATA/S2/Semester%201/Deep%20Learning/mini%20project/KELOMPOK%206_FINAL.ipynb) untuk mengenali pola sidik jari radio tersebut dan memprediksi lokasi pengguna dengan tingkat presisi skala meter.
 
 <p align="center">
   <img src="assets/wifi_fingerprinting_concept.svg" alt="Konsep Wi-Fi Fingerprinting" width="95%">
@@ -79,7 +80,7 @@ Sumber data berasal dari [UCI Machine Learning Repository: UJIIndoorLoc Dataset]
 
 | Karakteristik | Data Training (`trainingData.csv`) | Data Validasi Independen (`validationData.csv`) |
 |---|---|---|
-| **Jumlah Baris (Sampel)** | 19.937 baris | 1.111 baris |
+| **Jumlah Baris (Sampel)** | 19.937 baris (19.300 setelah deduplikasi) | 1.111 baris |
 | **Fitur Sinyal (Input)** | 520 WAP (`WAP001` – `WAP520`) | 520 WAP (`WAP001` – `WAP520`) |
 | **Target Klasifikasi** | `BUILDINGID` (3 kelas), `FLOOR` (5 kelas) | `BUILDINGID`, `FLOOR` |
 | **Target Regresi** | `LONGITUDE`, `LATITUDE` (satuan meter UTM) | `LONGITUDE`, `LATITUDE` |
@@ -95,7 +96,7 @@ Sumber data berasal dari [UCI Machine Learning Repository: UJIIndoorLoc Dataset]
 
 ## 🔄 Alur Metodologi Pengerjaan (Pipeline A–E)
 
-Seluruh eksperimen pada [`INII AMAN LA.ipynb`](file:///d:/DATA/S2/Semester%201/Deep%20Learning/mini%20project/INII%20AMAN%20LA.ipynb) dirancang secara terintegrasi mengikuti diagram alir metodologi komprehensif berikut:
+Seluruh eksperimen pada [`KELOMPOK 6_FINAL.ipynb`](file:///d:/DATA/S2/Semester%201/Deep%20Learning/mini%20project/KELOMPOK%206_FINAL.ipynb) dirancang secara terintegrasi mengikuti diagram alir metodologi komprehensif berikut:
 
 <p align="center">
   <img src="assets/workflow_pipeline.png" alt="Alur Metodologi Pengerjaan Proyek" width="95%">
@@ -120,7 +121,7 @@ Rincian implementasi pada setiap komponen alur kerja:
    * **Skenario 80:20:** 15.440 data latih dan 3.860 data uji.
    * **Skenario 70:30:** 13.510 data latih dan 5.790 data uji.
    * Target klasifikasi dibagi menggunakan *Stratified Split* guna menjamin proporsi gedung dan lantai tetap seimbang.
-3. **Feature Scaling:** Menggunakan `StandardScaler` dan `MinMaxScaler` yang hanya di-*fit* pada data training (*anti data leakage*).
+3. **Feature Scaling:** Menguji `StandardScaler` dan `MinMaxScaler` yang hanya di-*fit* pada data training (*anti data leakage*).
 4. **Feature Representation:** Menguji 3 skema representasi fitur:
    * *Full Features* (520 WAP).
    * *Reduced Features* (`VarianceThreshold(0.0)` membuang WAP yang mati total, tersisa 458–465 WAP aktif).
@@ -128,7 +129,7 @@ Rincian implementasi pada setiap komponen alur kerja:
 
 ### C. Modeling (Pemodelan Multi-Paradigma)
 1. **Clustering (Unsupervised Learning):**
-   * **K-Means:** Variasi $k=2, 3, 4$ dievaluasi dengan *Silhouette Score* dan *Davies-Bouldin Index*.
+   * **K-Means:** Variasi $k=2, 3, 4$ dievaluasi dengan *Silhouette Score*, *Davies-Bouldin Index*, *ARI*, dan *NMI*.
    * **DBSCAN:** Pengujian parameter `eps` ($1.0, 1.2, 1.4, 1.6$) dan `min_samples=5` berdasarkan *k-distance plot*.
 2. **Classical Machine Learning (Supervised):**
    * **Klasifikasi:** Logistic Regression (LR), K-Nearest Neighbors (KNN), Decision Tree (DT), Support Vector Machine (SVM), Random Forest (RF), Gradient Boosting (GB).
@@ -257,7 +258,7 @@ $$
 
 | Model | Kategori Tugas | Alasan Ilmiah Pemilihan |
 |---|---|---|
-| **Random Forest** | Klasifikasi & Regresi | **Pilihan Utama (Ensemble Tree).** Sangat tahan terhadap fitur sinyal yang jarang (*sparse*), mampu menangani batas non-linear lantai beton bertulang, dan terbukti meraih galat terkecil setelah *tuning*. |
+| **Random Forest** | Klasifikasi & Regresi | **Pilihan Utama (Ensemble Tree).** Sangat tahan terhadap fitur sinyal yang jarang (*sparse*), mampu menangani batas non-linear lantai beton bertulang, dan terbukti meraih galat terkecil setelah *tuning* parameter `max_features=0.3`. |
 | **Logistic Regression** | Klasifikasi Gedung | Sangat cepat, memiliki regularisasi konveks yang kokoh, dan terbukti meraih akurasi **100% sempurna** pada deteksi gedung di data validasi independen. |
 | **K-Nearest Neighbors (KNN)** | Klasifikasi & Regresi | Karakteristik fisik sinyal Wi-Fi mirip dengan konsep tetangga terdekat: jika pola kekuatan sinyal ponsel Anda mirip dengan sampel sidik jari di titik tertentu, maka lokasi Anda pasti berdekatan. |
 | **Support Vector Machine (SVM / SVR)** | Klasifikasi & Regresi | Menggunakan kernel RBF (*Radial Basis Function*) untuk memetakan ruang sinyal 520 dimensi ke bidang pemisah non-linear. |
@@ -271,7 +272,7 @@ $$
 
 ### 1. Eksplorasi Pola Sinyal (Clustering PCA 2D)
 Apakah sinyal Wi-Fi secara mandiri mengelompok sesuai bentuk gedung di dunia nyata?
-Visualisasi reduksi dimensi PCA 2D membuktikan bahwa pola sinyal secara alami terpisah menjadi 3 kelompok besar yang merepresentasikan 3 gedung kampus:
+Visualisasi reduksi dimensi PCA 2D membuktikan bahwa pola sinyal secara alami terpisah menjadi kelompok-kelompok yang merepresentasikan gedung kampus:
 
 <p align="center">
   <img src="assets/clustering_pca2d.png" alt="Visualisasi PCA 2D Clustering" width="85%">
@@ -281,7 +282,7 @@ Visualisasi reduksi dimensi PCA 2D membuktikan bahwa pola sinyal secara alami te
 
 #### Rangkuman Evaluasi Clustering:
 * **K-Means ($k=3$):** Silhouette Score = `0.1674`, Davies-Bouldin Index = `2.3032`, ARI Building = `0.4300`, NMI Building = `0.5823`.
-* **K-Means ($k=4$):** ARI Building meningkat tajam ke `0.7424` dan NMI Building = `0.7382`, mencerminkan subdivisi spasial koridor utama gedung.
+* **K-Means ($k=4$):** ARI Building meningkat tajam ke `0.7424` dan NMI Building = `0.7382`, mencerminkan kesesuaian tingkat tinggi terhadap struktur gedung.
 * **DBSCAN ($\epsilon=1.6$):** Jumlah Cluster = `33`, Noise = `0.58%`, Silhouette Score = `0.1447`, Davies-Bouldin = `0.8557`.
 
 ---
@@ -292,7 +293,7 @@ Visualisasi performa tebakan model pada data testing (Split 80:20):
 <p align="center">
   <img src="assets/confusion_matrix.png" alt="Confusion Matrix Klasifikasi" width="90%">
   <br>
-  <em>Gambar 5: Confusion Matrix untuk BUILDINGID (Akurasi 99.74%) dan FLOOR (Akurasi 99.56%). Matriks diagonal dominan pekat membuktikan kesalahan prediksi mendekati nol.</em>
+  <em>Gambar 5: Confusion Matrix untuk BUILDINGID (Akurasi 99.74%) dan FLOOR (Akurasi 99.59%). Matriks diagonal dominan pekat membuktikan kesalahan prediksi mendekati nol.</em>
 </p>
 
 ---
@@ -311,8 +312,8 @@ Bagaimana akurasi prediksi titik koordinat fisik pengguna?
 | Target | Model Terpilih | Accuracy | Precision Macro | Recall Macro | F1 Macro | MAE (meter) | RMSE (meter) | $R^2$ Score |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **BUILDINGID** | **Logistic Regression** | **99.74%** | **99.82%** | **99.66%** | **99.74%** | — | — | — |
-| **FLOOR** | **Random Forest** | **99.56%** | **99.62%** | **99.65%** | **99.63%** | — | — | — |
-| **LONGITUDE** | **Random Forest (Tuned)** | — | — | — | — | **2.56 m** | **6.92 m** | **0.9969** |
+| **FLOOR** | **Random Forest** | **99.59%** | **99.62%** | **99.65%** | **99.65%** | — | — | — |
+| **LONGITUDE** | **Random Forest (Tuned)** | — | — | — | — | **2.55 m** | **6.89 m** | **0.9969** |
 | **LATITUDE** | **Random Forest (Tuned)** | — | — | — | — | **2.06 m** | **5.07 m** | **0.9944** |
 
 > *Catatan Model Tambahan:* Pada target `FLOOR`, model **MLP (1 Hidden Layer, 64 neuron, LR=0.001)** juga mencapai akurasi luar biasa sebesar **99.40%** dan F1 Macro **99.45%**.
@@ -321,10 +322,10 @@ Bagaimana akurasi prediksi titik koordinat fisik pengguna?
 * **Model Bawaan (Default Random Forest):**
   * Skenario 80:20: Mean = **$4.02\text{ meter}$** | Median = **$2.04\text{ meter}$** | Persentil 90 = **$8.39\text{ meter}$**
   * Skenario 70:30: Mean = **$4.24\text{ meter}$** | Median = **$2.27\text{ meter}$** | Persentil 90 = **$8.70\text{ meter}$**
-* **Model Hasil Tuning (Random Forest Tuned - Model Akhir 80:20):**
-  * **Mean Positioning Error (MPE):** **$3.64\text{ meter}$** *(Turun signifikan dari 4.02 m)*
-  * **Median Positioning Error:** **$2.03\text{ meter}$** *(50% pengguna terdeteksi dalam radius 2 meter!)*
-  * **90th Percentile Error (P90):** **$7.40\text{ meter}$**
+* **Model Hasil Tuning (Random Forest Tuned `max_features=0.3` - Model Akhir 80:20):**
+  * **Mean Positioning Error (MPE):** **$3.62\text{ meter}$** *(Turun signifikan dari 4.02 m)*
+  * **Median Positioning Error:** **$1.97\text{ meter}$** *(50% pengguna terdeteksi dalam radius kurang dari 2 meter!)*
+  * **90th Percentile Error (P90):** **$7.41\text{ meter}$**
 
 ---
 
@@ -352,33 +353,48 @@ Pengujian sesungguhnya di lapangan untuk menguji ketahanan model terhadap perbed
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **BUILDINGID** | **Logistic Regression** | — | **100.00%** | **1.0000** | **1.0000** | **1.0000** | — | — | — |
 | **BUILDINGID** | **MLP** | MLP_1_Hidden | **99.10%** | **0.9880** | **0.9924** | **0.9901** | — | — | — |
-| **FLOOR** | **Random Forest** | — | **90.82%** | **0.9189** | **0.8782** | **0.8933** | — | — | — |
+| **FLOOR** | **Random Forest** | — | **91.27%** | **0.9189** | **0.8782** | **0.8952** | — | — | — |
 | **FLOOR** | **MLP** | MLP_1_Hidden | **89.56%** | **0.8968** | **0.8903** | **0.8921** | — | — | — |
-| **LONGITUDE** | **Random Forest (Tuned)** | — | — | — | — | — | **7.72 m** | **12.42 m** | **0.9893** |
-| **LONGITUDE** | **MLP** | MLP_2_Hidden | — | — | — | — | **11.89 m** | **19.09 m** | **0.9748** |
-| **LATITUDE** | **Random Forest (Tuned)** | — | — | — | — | — | **6.76 m** | **10.72 m** | **0.9767** |
-| **LATITUDE** | **MLP** | MLP_2_Hidden | — | — | — | — | **8.77 m** | **13.15 m** | **0.9650** |
+| **LONGITUDE** | **Random Forest (Tuned)** | — | — | — | — | — | **7.71 m** | **12.41 m** | **0.9893** |
+| **LONGITUDE** | **MLP** | MLP_2_Hidden | — | — | — | — | **11.11 m** | **18.90 m** | **0.9748** |
+| **LATITUDE** | **Random Forest (Tuned)** | — | — | — | — | — | **6.73 m** | **10.70 m** | **0.9768** |
+| **LATITUDE** | **MLP** | MLP_2_Hidden | — | — | — | — | **8.82 m** | **12.42 m** | **0.9650** |
 
 #### 🎯 Perbandingan Galat Posisi 2D pada Data Validasi Independen:
-* **Random Forest (Tuned):** Mean = **$11.31\text{ meter}$** | Median = **$7.75\text{ meter}$** | P90 = **$24.38\text{ meter}$**
-* **MLP (ANN):** Mean = **$16.26\text{ meter}$** | Median = **$11.60\text{ meter}$** | P90 = **$32.99\text{ meter}$**
+* **Random Forest (Tuned):** Mean = **$11.30\text{ meter}$** | Median = **$7.83\text{ meter}$** | P90 = **$24.22\text{ meter}$**
+* **MLP (ANN):** Mean = **$15.65\text{ meter}$** | Median = **$11.38\text{ meter}$** | P90 = **$31.01\text{ meter}$**
 
-> **Analisis Ilmiah (Overfitting vs Covariate Shift):**
-> Kenaikan galat pada dataset validasi independen (dari 3.64 m ke 11.31 m) **bukan disebabkan oleh overfitting model**, melainkan fenomena **Covariate Shift / Domain Shift** yang umum dalam telekomunikasi nirkabel:
-> 1. *Hardware Heterogeneity:* Data latih dan validasi direkam menggunakan smartphone berbeda yang memiliki sensitivitas antena Wi-Fi dan *firmware filtering* berbeda.
-> 2. *Body Shadowing:* Tubuh manusia (~70% air) meredam sinyal 2.4 GHz sebesar 3–6 dBm tergantung posisi genggaman ponsel.
-> 3. *Temporal Variations:* Data validasi diambil beberapa minggu kemudian, di mana posisi pintu, perabotan, dan kepadatan orang telah bergeser.
-> Buktinya, model **Logistic Regression tetap meraih akurasi 100% sempurna pada gedung**, dan Random Forest tetap mempertahankan akurasi lantai di atas 90%.
+> **Keunggulan Komparatif:** Random Forest hasil tuning menghasilkan galat posisi rata-rata sekitar **27,8% lebih rendah** dibandingkan MLP pada data validasi independen!
+
+---
+
+## 🔬 Keterbatasan Eksperimen & Analisis Ilmiah (Distribution Shift)
+
+Berdasarkan analisis kritis pada berkas master [`KELOMPOK 6_FINAL.ipynb`](file:///d:/DATA/S2/Semester%201/Deep%20Learning/mini%20project/KELOMPOK%206_FINAL.ipynb), peningkatan Mean Positioning Error dari $3.62\text{ m}$ (testing internal) menjadi $11.30\text{ m}$ (validasi independen) dijelaskan secara ilmiah melalui faktor-faktor berikut:
+
+1. **Pengulangan Fingerprint RSSI & Potensi Data Leakage:**
+   * Proses deduplikasi berhasil menghapus 637 baris yang identik berdasarkan keseluruhan kolom.
+   * Pemeriksaan lanjutan terhadap 520 fitur RSSI menemukan masih terdapat 215 baris dengan fingerprint berulang pada data training.
+   * Dari 3.860 observasi testing (80:20), terdapat 47 observasi (1,22%) yang memiliki fingerprint RSSI identik dengan data training akibat pembagian acak murni, yang berpotensi menghasilkan estimasi performa internal sedikit optimis.
+2. **Perbedaan Perangkat (*Hardware Heterogeneity*) & Distribution Shift:**
+   * Pemeriksaan metadata `PHONEID` membuktikan bahwa data training mencakup 16 tipe perangkat, sedangkan data validasi mencakup 11 tipe perangkat.
+   * Hanya 2 tipe perangkat (`PHONEID 13` dan `PHONEID 14`) yang beririsan di kedua dataset!
+   * Sebanyak 397 observasi (35,73%) data validasi berasal dari perangkat yang ada di training, sedangkan **714 observasi (64,27%) berasal dari perangkat baru yang belum pernah dilihat sama sekali saat pelatihan**.
+   * Perbedaan antena Wi-Fi, gain penguat sinyal, dan algoritma filtering pada tipe smartphone yang berbeda menyebabkan *distribution shift* sistematis pada skala RSSI.
+3. **Fluktuasi Temporal & Redaman Tubuh Manusia (*Body Shadowing*):**
+   * Data validasi diambil beberapa minggu/bulan kemudian dengan pengguna yang berbeda. Tubuh manusia (~70% air) menyerap gelombang mikro 2.4 GHz sebesar 3–6 dBm tergantung sudut hadap pengguna terhadap access point.
+4. **Bukti Ketahanan Model:**
+   * Meskipun terjadi pergeseran distribusi sinyal, model **Logistic Regression tetap meraih akurasi 100% sempurna pada gedung**, dan Random Forest tetap mempertahankan akurasi lantai di atas 91%.
 
 ---
 
 ## 🏆 Kesimpulan & Rekomendasi Implementasi Nyata
 
-Berdasarkan seluruh hasil eksperimen pada [`INII AMAN LA.ipynb`](file:///d:/DATA/S2/Semester%201/Deep%20Learning/mini%20project/INII%20AMAN%20LA.ipynb), rekomendasi strategis untuk implementasi nyata adalah:
+Berdasarkan seluruh hasil eksperimen pada [`KELOMPOK 6_FINAL.ipynb`](file:///d:/DATA/S2/Semester%201/Deep%20Learning/mini%20project/KELOMPOK%206_FINAL.ipynb), rekomendasi strategis untuk implementasi nyata adalah:
 
 1. **Arsitektur Hibrida Dua Tahap (*Hierarchical Localization Pipeline*):**
    * **Tahap 1 (Deteksi Gedung):** Gunakan **Logistic Regression** karena sangat ringan dan terbukti mencapai akurasi **100% sempurna** di dunia nyata.
-   * **Tahap 2 & 3 (Deteksi Lantai & Koordinat 2D):** Gunakan **Random Forest (Tuned)** karena meraih performa tertinggi pada lantai (akurasi 90.82% lapangan) dan galat posisi terkecil (3.64 m internal, 11.31 m lapangan).
+   * **Tahap 2 & 3 (Deteksi Lantai & Koordinat 2D):** Gunakan **Random Forest (Tuned)** karena meraih performa tertinggi pada lantai (akurasi 91.27% lapangan) dan galat posisi terkecil (3.62 m internal, 11.30 m lapangan).
 2. **Efisiensi Komputasi & Inferensi Real-Time:**
    * Model Random Forest dan Logistic Regression yang telah disimpan memiliki waktu inferensi sub-milidetik, sehingga sangat hemat daya saat dipasang pada aplikasi Android/iOS.
 3. **Penyaringan WAP Mati:**
@@ -417,7 +433,7 @@ pip install numpy pandas matplotlib seaborn scikit-learn tensorflow
 ### 4. Menjalankan Notebook Master
 Buka dan jalankan file notebook master yang telah teruji:
 ```bash
-jupyter notebook "INII AMAN LA.ipynb"
+jupyter notebook "KELOMPOK 6_FINAL.ipynb"
 ```
 
 ---
